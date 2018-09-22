@@ -1,4 +1,14 @@
-export type Protocol = 'http' | 'https'
+export const Protocol = {
+    HTTP: 'http',
+    HTTPS: 'https'
+}
+
+export type Protocol = keyof typeof Protocol;
+
+export enum Port {
+    HTTP = 80,
+    HTTPS = 443
+}
 
 export class Link {
     constructor(
@@ -14,8 +24,8 @@ export class Link {
         const [ , protocol, host, , port, path ] = re.exec(externalLink)
 
         return new Link()
-            .setProtocol(<Protocol>protocol)
-            .setHost(host)
+            .setProtocol(<Protocol>protocol.toLowerCase())
+            .setHost(host.toLowerCase())
             .setPort(port && parseInt(port, 10))
             .setPrefix(prefix)
             .setInternalLink(path.replace(prefix, ''))
@@ -52,8 +62,8 @@ export class Link {
 
     toExternalLink(): string {
         const omitPort = !this.port
-         || (this.proto === 'http' && this.port === 80)
-         || (this.proto === 'https' && this.port === 443)
+         || (this.proto === Protocol.HTTP && this.port === Port.HTTP)
+         || (this.proto === Protocol.HTTPS && this.port === Port.HTTPS)
 
          return `${this.proto}://${this.host}${omitPort ? '' : (':' + this.port)}${this.prefix}${this.internalLink}`
     }
