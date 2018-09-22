@@ -1,0 +1,14 @@
+image: abstruse
+
+matrix:
+  - env: SCRIPT=lint NODE_VERSION=10
+  - env: SCRIPT=tslint NODE_VERSION=10
+
+install:
+  - npm install
+
+script:
+  - if [[ "$SCRIPT" ]]; then npm run-script $SCRIPT; fi
+
+cache:
+  - node_modules
