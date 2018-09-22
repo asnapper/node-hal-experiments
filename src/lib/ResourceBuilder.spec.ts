@@ -17,8 +17,6 @@ const groupResources = mockGroups.map(
         .setLink('members', g.members.map(u => ({ href: '/users/' + u })))
         .toResource())
 
-
-
 describe('should be able to crate HAL resources', () => {
     it('should be able to set a simple link for a relation', () => {
         const r = new ResourceBuilder()

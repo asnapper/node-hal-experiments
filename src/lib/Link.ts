@@ -1,6 +1,5 @@
 export type Protocol = 'http' | 'https'
 
-
 export class Link {
     constructor(
         private internalLink?: string,

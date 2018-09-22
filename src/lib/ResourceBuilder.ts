@@ -1,4 +1,3 @@
-
 import { Entity, Resource, ResourceLink } from './'
 
 export class ResourceBuilder {

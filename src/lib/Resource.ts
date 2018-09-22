@@ -21,4 +21,3 @@ export interface Resource extends Entity {
         [type: string]: Resource[]
     }
 }
-
