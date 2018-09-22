@@ -1,5 +1,12 @@
 image: abstruse
 
+branches:
+  - master
+  - develop
+  - feature/.*
+  - hotfix/.*
+  - release/.*
+
 matrix:
   - env: SCRIPT=test NODE_VERSION=10
   - env: SCRIPT=tslint NODE_VERSION=10
