@@ -1,9 +1,8 @@
-export const Protocol = {
+export type Protocol = 'http' | 'https'
+export const Protocol =  {
     HTTP: 'http',
     HTTPS: 'https'
 }
-
-export type Protocol = keyof typeof Protocol;
 
 export enum Port {
     HTTP = 80,
