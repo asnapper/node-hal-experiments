@@ -1,11 +1,20 @@
 import { Link } from './Link'
 
 describe('Link transformation', () => {
-    it('should render a chained linkcorrectly', () => {
+    it('should render a chained link correctly', () => {
         const link = new Link('/users/1')
             .setProtocol('http')
             .setHost('bla.bla.com')
             .setPort(80)
+            .setPrefix('/api/v1')
+        expect(link.toExternalLink()).toBe('http://bla.bla.com/api/v1/users/1')
+        expect(link.toInternalLink()).toBe('/users/1')
+    })
+    it('should render a chained link correctly even with undefined port', () => {
+        const link = new Link('/users/1')
+            .setProtocol('http')
+            .setHost('bla.bla.com')
+            .setPort(undefined)
             .setPrefix('/api/v1')
         expect(link.toExternalLink()).toBe('http://bla.bla.com/api/v1/users/1')
         expect(link.toInternalLink()).toBe('/users/1')
