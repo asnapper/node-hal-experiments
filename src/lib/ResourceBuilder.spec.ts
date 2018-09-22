@@ -25,7 +25,7 @@ describe('should be able to crate HAL resources', () => {
             .setLink('self', { href: '/me' })
             .toResource()
 
-        // TODO: smells like bad design 
+        // TODO: smells like bad design
         const selfLink = <ResourceLink>r._links['self']
 
         expect(selfLink.href).toBe('/me')
@@ -36,7 +36,7 @@ describe('should be able to crate HAL resources', () => {
             .setLink('members', [ { href: '/me' }, { href: '/myself' }, { href: '/i' } ])
             .toResource()
 
-        // TODO: smells like bad design 
+        // TODO: smells like bad design
         const memberLinks = <ResourceLink[]>r._links['members']
 
         expect(memberLinks[0].href).toBe('/me')
