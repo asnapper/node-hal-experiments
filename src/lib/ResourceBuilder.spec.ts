@@ -76,31 +76,3 @@ describe('should be able to crate HAL resources', () => {
         expect(userCollectionRessource._embedded['group'].length).toBe(1)
     })
 })
-
-
-/*
-const userResources = mockUsers.map(
-    u => new ResourceBuilder()
-        .setEntity(u)
-        .setLink('self', { href: '/users/' + u.id })
-        .setLink('member-of', mockGroups.filter(g => ~g.members.indexOf(u.id))
-            .map(g => ({ href: '/groups/' + g.id })))
-        .toResource())
-
-const groupResources = mockGroups.map(
-    g => new ResourceBuilder()
-        .setEntity(g)
-        .setLink('self', { href: '/groups/' + g.id })
-        .setLink('members', g.members.map(u => ({ href: '/users/' + u })))
-        .toResource())
-
-const userCollectionRessource = new ResourceBuilder()
-    .setEntity({ count: userResources.length, total: userResources.length })
-    .setLink('self', { href: '/users' })
-    .embedResource('user', userResources)
-    .embedResource('group', groupResources)
-    .toResource()
-
-
-console.log(JSON.stringify(userCollectionRessource, null, 4))
-*/

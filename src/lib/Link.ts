@@ -12,14 +12,14 @@ export class Link {
 
     static fromExternalLink(externalLink: string, prefix: string): Link {
         const re = /(https?):\/\/([^\/\:]+)(\:(\d+))?(\/.+)/g
-        const matches = re.exec(externalLink)
+        const [ , protocol, host, , port, path ] = re.exec(externalLink)
 
         return new Link()
-            .setProtocol(<Protocol>matches[1])
-            .setHost(matches[2])
-            .setPort(matches[4] && parseInt(matches[4], 10))
+            .setProtocol(<Protocol>protocol)
+            .setHost(host)
+            .setPort(port && parseInt(port, 10))
             .setPrefix(prefix)
-            .setInternalLink(matches[5].replace(prefix, ''))
+            .setInternalLink(path.replace(prefix, ''))
     }
 
     setInternalLink(internalLink: string): Link {
